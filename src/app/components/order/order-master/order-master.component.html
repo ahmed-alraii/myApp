@@ -1,0 +1,20 @@
+
+
+
+<h2 class="text-center text-white">Order List</h2>
+
+<div class="form-group col-sm-5">
+    <label  for="" class="text-white">Select Category</label>
+    <select class="form-control"  [(ngModel)]="selectedId">
+        <option  [value]="0">Select Category</option>
+        <option *ngFor="let cat of categories" [value]="cat.id">{{cat.name}}</option>
+    </select>
+</div>
+
+<!-- <app-product-list [categoryId]="selectedId" (total)="onChangTotal($event)" ></app-product-list> -->
+
+
+<app-product-list [categoryId]="selectedId" ></app-product-list>
+
+
+<h2 class="text-center">{{ total | usdToRial | currency : 'OMR'}}</h2>

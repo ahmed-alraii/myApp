@@ -1,0 +1,29 @@
+<div class="card bg-white">
+
+
+  <img class="card-img-top" src="holder.js/100px180/" alt="">
+  <div class="card-body" >
+    <a (click)="back()"  class="btn btn-sm btn-primary text-white mb-5"> Back</a>
+    <h4 class="card-title">Order Datils</h4>
+
+    <div *ngIf="product != undefined">
+
+      <h2> id : {{product.id}}</h2>
+      <h2> Name : {{product.name}}</h2>
+      <h2> Price : {{product.price}}</h2>
+      <h2> Quantity : {{product.quantity}}</h2>
+
+      <a (click)="prev()" class="btn btn-sm btn-primary ml-r text-white" [hidden]="index == 0"> Prev</a> - 
+      <a (click)="next()"  class="btn btn-sm btn-primary text-white" [hidden]="index  == allIds.length - 1 "> Next</a>
+
+
+    </div>
+
+    <div *ngIf="product == undefined">
+
+      <h2 >Not Found</h2>
+
+    </div>
+
+  </div>
+</div>
