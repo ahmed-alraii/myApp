@@ -10,7 +10,7 @@ import { UserAuthService } from 'src/app/services/user-auth.service';
 export class HeaderComponent implements OnInit {
 
   isLoggedIn : Boolean = false;
-  constructor(private userAuth : UserAuthService , private router: Router){
+  constructor(private userAuth : UserAuthService , private router: Router ){
     this.userAuth.getStatus().subscribe(res => {
       this.isLoggedIn = res;
     })
@@ -27,11 +27,13 @@ export class HeaderComponent implements OnInit {
 
   logout(){
     this.userAuth.logout();
+    this.router.navigate(['login']);
+   
   }
 
   showOrders(){
-     if(this.isLoggedIn) this.router.navigate(['orders']);
-     else this.router.navigate(['login']);
+   //  if(this.isLoggedIn) this.router.navigate(['orders']);
+    // else this.router.navigate(['login']);
   }
 
 }

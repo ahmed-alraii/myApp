@@ -25,6 +25,7 @@ export class UserAuthService {
    logout(){
       localStorage.removeItem('token');
       this.userLoggedIn.next(false);
+    
    }
 
 

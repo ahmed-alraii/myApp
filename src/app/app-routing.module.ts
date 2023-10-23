@@ -6,13 +6,15 @@ import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { authGuard } from './guards/auth.guard';
+
 
 const routes: Routes = [
   {path:'' , component:MainLayoutComponent , children : [
 
     {path:'' ,  redirectTo: 'home' ,  pathMatch : 'full'},
     {path:'home' , component: HomeComponent},
-    {path:'orders' , component: ProductListComponent},
+    {path:'orders' , component: ProductListComponent , canActivate:[authGuard]},
     {path:'orders/:id' , component: ProductDetailsComponent},
     {path:'login' , component: LoginComponent , } ,
    
