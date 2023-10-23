@@ -7,6 +7,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { authGuard } from './guards/auth.guard';
+import { OrderMasterComponent } from './components/order/order-master/order-master.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,7 @@ const routes: Routes = [
 
     {path:'' ,  redirectTo: 'home' ,  pathMatch : 'full'},
     {path:'home' , component: HomeComponent},
-    {path:'orders' , component: ProductListComponent , canActivate:[authGuard]},
+    {path:'orders' , component: OrderMasterComponent , canActivate:[authGuard]},
     {path:'orders/:id' , component: ProductDetailsComponent},
     {path:'login' , component: LoginComponent , } ,
    

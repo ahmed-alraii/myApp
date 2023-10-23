@@ -15,8 +15,8 @@ export class OrderMasterComponent implements AfterContentChecked {
   total: number = 0;
 
   @ViewChild(ProductListComponent) private productListComponent = {} as ProductListComponent;
+  
   constructor(){
-
     this.categories = [
       {id: 1 , name : "test 1"},
       {id: 2 , name : "test 2"},

@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges ,Input ,Output , EventEmitter} from '@angular/core';
 import { ICategory } from 'src/app/Models/icategory';
 import { IProduct } from 'src/app/Models/iproduct';
+import { ProductsService } from 'src/app/services/products.service';
 import { StaticProductService } from 'src/app/services/static-product.service';
 
 @Component({
@@ -21,7 +22,7 @@ export class ProductListComponent implements OnInit , OnChanges{
   quantUser = 1;
 
 
-  constructor(private staticProduct : StaticProductService){
+  constructor(private staticProduct : StaticProductService , private productService : ProductsService){
 
    // this.filterdProducts = this.products;
 
@@ -30,11 +31,16 @@ export class ProductListComponent implements OnInit , OnChanges{
   ngOnInit(): void {
     console.log('init');
     this.products = this.staticProduct.getAll();
+    this.getAllProducts();
   }
 
 
   ngOnChanges(){
    // this.filterdProducts = this.products.filter(x => x.categoryId == this.categoryId);
+   this.productService.getByCategoryId(this.categoryId).subscribe((res:any) => {
+    this.products = res;
+    console.log(this.products)
+   })
   }
 
   buy(prod:any ){
@@ -64,6 +70,13 @@ export class ProductListComponent implements OnInit , OnChanges{
 
   addProduct(product : IProduct){
     this.staticProduct.add(product);
+  }
+
+  getAllProducts(){
+
+    this.productService.getAll().subscribe(res => {
+      console.log(res);
+    })
   }
 
 }

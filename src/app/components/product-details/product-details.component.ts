@@ -1,8 +1,10 @@
+import { Observable } from 'rxjs';
 import { StaticProductService } from 'src/app/services/static-product.service';
 import { Component, OnInit  } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { IProduct } from 'src/app/Models/iproduct';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-product-details',
@@ -13,12 +15,15 @@ export class ProductDetailsComponent implements OnInit {
 
   params:any = {};
   id : number | null = 0;
+  pId : number  = 0;
   product : IProduct | undefined  ;
+  currentProduct : any   ;
 
   allIds : any[] = [];
   index = 0;
 
   constructor( private staticProductService : StaticProductService ,
+    private productService : ProductsService ,
      private activatedRoute: ActivatedRoute ,
      private router: Router, 
      private location: Location
@@ -37,6 +42,10 @@ export class ProductDetailsComponent implements OnInit {
 
     this.allIds = staticProductService.getAll()?.filter(x => x.id) as [];
     console.log(this.allIds);
+
+  productService.getById(this.pId).subscribe(res => {
+    this.currentProduct = res;
+  })
      
   }
 
