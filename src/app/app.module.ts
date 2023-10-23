@@ -18,6 +18,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import {HttpClientModule} from '@angular/common/http';
+import { AddComponent } from './components/order/add/add.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {HttpClientModule} from '@angular/common/http';
     NotFoundComponent,
     MainLayoutComponent,
     ProductDetailsComponent,
+    AddComponent,
     
 
   ],

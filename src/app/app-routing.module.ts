@@ -8,6 +8,7 @@ import { MainLayoutComponent } from './components/main-layout/main-layout.compon
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { authGuard } from './guards/auth.guard';
 import { OrderMasterComponent } from './components/order/order-master/order-master.component';
+import { AddComponent } from './components/order/add/add.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
     {path:'home' , component: HomeComponent},
     {path:'orders' , component: OrderMasterComponent , canActivate:[authGuard]},
     {path:'orders/:id' , component: ProductDetailsComponent},
+    {path:'orders/add' , component: AddComponent},
     {path:'login' , component: LoginComponent , } ,
    
   ]},
