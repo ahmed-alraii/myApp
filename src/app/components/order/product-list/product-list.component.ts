@@ -13,7 +13,7 @@ export class ProductListComponent implements OnInit , OnChanges{
 
   products : IProduct[] | null = null;
 
-  @Input() categoryId : number = 1;
+  @Input() categoryId : number = 0;
 
   @Output() total = new EventEmitter<number>;
 
@@ -26,6 +26,8 @@ export class ProductListComponent implements OnInit , OnChanges{
 
    // this.filterdProducts = this.products;
 
+   this.getAllProducts()
+
   }
 
   ngOnInit(): void {
@@ -37,10 +39,16 @@ export class ProductListComponent implements OnInit , OnChanges{
 
   ngOnChanges(){
    // this.filterdProducts = this.products.filter(x => x.categoryId == this.categoryId);
-   this.productService.getByCategoryId(this.categoryId).subscribe((res:any) => {
-    this.products = res;
-    console.log(this.products)
-   })
+
+   if(this.categoryId == 0) this.getAllProducts();
+   else{
+    this.productService.getByCategoryId(this.categoryId).subscribe((res:any) => {
+      this.products = res;
+      console.log(this.products)
+     })
+
+   }
+  
   }
 
   buy(prod:any ){
@@ -75,7 +83,7 @@ export class ProductListComponent implements OnInit , OnChanges{
   getAllProducts(){
 
     this.productService.getAll().subscribe(res => {
-      console.log(res);
+      this.products = res;
     })
   }
 

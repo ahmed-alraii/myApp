@@ -11,7 +11,7 @@ export class OrderMasterComponent implements AfterContentChecked {
 
 
   categories: ICategory[] = [];
-  selectedId : number = 1;
+  selectedId : number = 0;
   total: number = 0;
 
   @ViewChild(ProductListComponent) private productListComponent = {} as ProductListComponent;

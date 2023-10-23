@@ -15,10 +15,10 @@ const routes: Routes = [
   {path:'' , component:MainLayoutComponent , children : [
 
     {path:'' ,  redirectTo: 'home' ,  pathMatch : 'full'},
-    {path:'home' , component: HomeComponent},
+    {path:'home' , component: HomeComponent ,  canActivate:[authGuard]},
     {path:'orders' , component: OrderMasterComponent , canActivate:[authGuard]},
     {path:'orders/:id' , component: ProductDetailsComponent},
-    {path:'orders/add' , component: AddComponent},
+    {path:'add' , component: AddComponent},
     {path:'login' , component: LoginComponent , } ,
    
   ]},
