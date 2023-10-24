@@ -43,7 +43,7 @@
               <label for=""></label>
               <label [hidden]="prodCatigoryId.valid" class="text-danger"> Required</label>
                <select class="form-control" name="categoryId" #prodCatigoryId="ngModel" [(ngModel)]="product.categoryId" required >
-                 <option  [ngValue]="0"> Select Category</option>
+                 <option  value="0"> Select Category</option>
                  <option *ngFor="let cat of categories"   [ngValue]="cat.id" >{{cat.name}}</option>
                </select>
       

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -8,7 +7,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AsideComponent } from './components/aside/aside.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductListComponent } from './components/order/product-list/product-list.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HighlightDirective } from './directives/highlight.directive';
 import { PositiveValueDirective } from './directives/positive-value.directive';
 import { UsdToRialPipe } from './pips/usd-to-rial.pipe';
@@ -19,8 +18,8 @@ import { MainLayoutComponent } from './components/main-layout/main-layout.compon
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import {HttpClientModule} from '@angular/common/http';
 import { AddComponent } from './components/order/add/add.component';
-import { EditProductComponent } from './edit-product/edit-product.component';
 import { EditOrderComponent } from './components/order/edit-order/edit-order.component';
+import { UserRegisterComponent } from './components/user-register/user-register.component';
 
 @NgModule({
   declarations: [
@@ -39,16 +38,16 @@ import { EditOrderComponent } from './components/order/edit-order/edit-order.com
     MainLayoutComponent,
     ProductDetailsComponent,
     AddComponent,
-    EditProductComponent,
     EditOrderComponent,
-    
-
+    UserRegisterComponent,
+  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
     
   ],
   providers: [],

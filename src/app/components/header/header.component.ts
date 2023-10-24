@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
       this.isLoggedIn = res;
     })
 
-    if(!this.isLoggedIn) userAuth.login();
+    //if(!this.isLoggedIn) userAuth.login();
   }
 
 

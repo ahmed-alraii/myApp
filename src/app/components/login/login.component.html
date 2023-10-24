@@ -1,7 +1,7 @@
 <div class="container">
 
 
-    <form class=" mt-5" action="">
+    <form class=" mt-5" (submit)="login()" [formGroup]="form">
 
      
 
@@ -18,20 +18,20 @@
 
                 <div class="row justify-content-center ">
 
-                <div class="col-sm-4">
-
-                    <div class="form-group">
-                        <input type="text" class="form-control" aria-describedby="helpId" placeholder="User Name">
-                    </div>
-
-                </div>
-
-
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <input type="text" class="form-control" aria-describedby="helpId" placeholder="Password">
-                    </div>
-                </div>
+                    <div class="col-sm-4">
+                        <label for=""></label>
+                    
+                        <input type="email" class="form-control " formControlName="email"  name="email" id="email" placeholder="Email" required>
+          
+                      </div>
+          
+                      <div class="col-sm-4">
+                        <label for=""></label>
+                     
+                        <input type="password" class="form-control"  formControlName="password"  name="password" id="password" placeholder="Password" required>
+          
+                      </div>
+          
 
 
 
@@ -42,7 +42,7 @@
             </div>
 
             <div class=" row justify-content-center mt-5 ">
-                <button [disabled]="isLoggedIn" (click)="login()"
+                <button type="submit" [disabled]="form.invalid"
                     class="btn btn-success mr-5 btn-block col-sm-4 mb-3">Login</button>
             </div>
 
