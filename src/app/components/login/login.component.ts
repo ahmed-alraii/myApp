@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit{
   isLoggedIn : Boolean = false;
 
   constructor(private userAuth : UserAuthService , private router : Router){
-    this.isLoggedIn =  this.userAuth.isLoggedIn();
+   // this.isLoggedIn =  this.userAuth.isLoggedIn();
 
     this.userAuth.getStatus().subscribe(res => {
       this.isLoggedIn = res;
@@ -47,22 +47,31 @@ export class LoginComponent implements OnInit{
   login(): any{
   //  let user : IUser = {email:"user20@gmail.com" , password:"123456"} as IUser;
 
+  let result;
   if(this.form.invalid) return false;
 
    let user = this.form.value as IUser;
 
-    this.userAuth.login(user);
+    this.userAuth.login(user).subscribe(res => {
 
-    console.log( );
-
-    if(localStorage.getItem('token') == undefined) {
-      return alert('Invalid User!')
-    }
+      let users =  res;
+      let existedUser =  users.find(x => x.email == user.email && x.password == user.password);
     
-    this.isLoggedIn =  this.userAuth.isLoggedIn();
-     this.router.navigate(['home']);
+     
+       if(existedUser == undefined)  return alert('Alert Invalid')
+       else{
+        let token = '123456789abcde';
+        localStorage.setItem('token' , token);
+        
+       return this.router.navigate(['home']);
+       }
+  
+    });
+    
+   
     
   }
+  
   
 
   logout(){

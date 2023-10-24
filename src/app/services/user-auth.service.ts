@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment.development';
 export class UserAuthService {
 
 
-  private userLoggedIn : BehaviorSubject<Boolean>;
+  public userLoggedIn : BehaviorSubject<Boolean>;
 
   constructor(private http : HttpClient) { 
 
@@ -18,23 +18,9 @@ export class UserAuthService {
 
   }
 
-   login(user : IUser): any{
+   login(user : IUser): Observable<IUser[]>{
     let result : any;
-  this.http.get<IUser[]>(`${environment.apiUrl}/users`).subscribe(res => {
-
-      let users =  res;
-      let existedUser: any =  users.find(x => x.email == user.email && x.password == user.password);
-
-     
-       if(existedUser == undefined)   result = {message : 'Invalid User'}
-       else{
-        let token = '123456789abcde';
-        localStorage.setItem('token' , token);
-        this.userLoggedIn.next(true);
-        
-       }
-  
-    });
+    return this.http.get<IUser[]>(`${environment.apiUrl}/users`);
    }
 
 
@@ -46,7 +32,14 @@ export class UserAuthService {
 
 
    isLoggedIn(){
-    return localStorage.getItem('token')? true : false ;
+    
+    if(localStorage.getItem('token')){
+      this.userLoggedIn.next(true);
+      return true;
+    }else{
+      return false;
+    }
+    // return localStorage.getItem('token')? true : false ;
    }
 
    getStatus(){
