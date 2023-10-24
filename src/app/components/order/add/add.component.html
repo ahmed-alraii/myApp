@@ -20,7 +20,7 @@
             <div class="col-sm-6">
               <label for=""></label>
               <label [hidden]="prodName.valid" class="text-danger"> Required</label>
-              <input type="text" class="form-control" #prodName="ngModel" [(ngModel)]="product.name" name="name" pattern="^[A-Z a-z ]+$" placeholder="Name" required>
+              <input type="text" class="form-control" #prodName="ngModel" [(ngModel)]="product.name" name="name" pattern="^[A-Za-z0-9 ]+$" placeholder="Name" required>
 
             </div>
 

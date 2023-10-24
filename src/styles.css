@@ -2,9 +2,15 @@
 .active{
     background-color: gray;
     color: white;
+    border: 1px solid black;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-    background-color: rgb(238, 219, 219);
-    color: gray;
+    background-color: rgb(197, 194, 194);
+    color: black;
+    border: 1px solid black;
+}
+
+.border-3 {
+    border-width:3px !important;
 }

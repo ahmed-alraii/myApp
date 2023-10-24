@@ -65,7 +65,7 @@
       <div class="navbar-nav">
           <a class="nav-item nav-link " [hidden]="isLoggedIn" routerLink="/login" routerLinkActive="active" tabindex="-1" aria-disabled="true">Login</a>
           <button class="nav-item nav-link bg-dark text-white" [hidden]="!isLoggedIn" (click)="logout()" tabindex="-1" aria-disabled="true">Logout</button>
-          <a  class="nav-item nav-link active" routerLink="user-register" [hidden]="isLoggedIn" >Register</a>
+          <a  class="nav-item nav-link active" routerLink="user-register" routerLinkActive="active" [hidden]="isLoggedIn" >Register</a>
        
       </div>
 
