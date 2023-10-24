@@ -19,6 +19,8 @@ import { MainLayoutComponent } from './components/main-layout/main-layout.compon
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import {HttpClientModule} from '@angular/common/http';
 import { AddComponent } from './components/order/add/add.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { EditOrderComponent } from './components/order/edit-order/edit-order.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { AddComponent } from './components/order/add/add.component';
     MainLayoutComponent,
     ProductDetailsComponent,
     AddComponent,
+    EditProductComponent,
+    EditOrderComponent,
     
 
   ],

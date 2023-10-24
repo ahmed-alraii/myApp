@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { IProduct } from '../Models/iproduct';
 import { Observable, catchError, retry } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
+import { ICategory } from '../Models/icategory';
 
 @Injectable({
   providedIn: 'root'
@@ -48,5 +49,12 @@ export class ProductsService {
    return this.http.delete(`${environment.apiUrl}/orders/${id}` , { headers : this.headers } ) 
   }
 
+
+  getAllCategories(): Observable<ICategory[]>{
+    return this.http.get<ICategory[]>(`${environment.apiUrl}/categories/`).pipe(  
+      retry(3),
+      catchError( () => {throw new Error('Not Valid, Try again')})
+    );
+  }
 
 }
