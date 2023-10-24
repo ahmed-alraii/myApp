@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+.active{
+    background-color: gray;
+    color: white;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: rgb(238, 219, 219);
+    color: gray;
+}
