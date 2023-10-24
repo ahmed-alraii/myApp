@@ -1,40 +1,53 @@
 <div class="container">
 
-   
-    <form class="bg-secondary mt-5" action="" >
 
-        <h2 class="text-center pb-3 mb-3 text-white pt-5 mt-3"> Login Page</h2>
+    <form class=" mt-5" action="">
+
+     
 
 
-          <div class="row justify-content-center ">
+        <div class="row justify-content-center ">
+            
 
-       
+            <div class="col-sm-6 card p-2">
 
-        <div class="col-sm-3">
 
-            <div class="form-group">
-                <input type="text" class="form-control" aria-describedby="helpId" placeholder="User Name">
+                <div class="row justify-content-center">
+                    <h2 class="text-center pb-3 mb-3  pt-5 mt-3 text-secondary"> Login Page</h2>
+                </div>
+
+                <div class="row justify-content-center ">
+
+                <div class="col-sm-4">
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" aria-describedby="helpId" placeholder="User Name">
+                    </div>
+
+                </div>
+
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <input type="text" class="form-control" aria-describedby="helpId" placeholder="Password">
+                    </div>
+                </div>
+
+
+
+
+
+
+                <!-- <button [disabled]="!isLoggedIn" class="btn btn-danger" (click)="logout()">Logout</button> -->
+            </div>
+
+            <div class=" row justify-content-center mt-5 ">
+                <button [disabled]="isLoggedIn" (click)="login()"
+                    class="btn btn-success mr-5 btn-block col-sm-4 mb-3">Login</button>
             </div>
 
         </div>
+    </div>
 
-
-        <div class="col-sm-3">
-            <div class="form-group">
-                <input type="text" class="form-control" aria-describedby="helpId" placeholder="Password">
-            </div>
-        </div>
-
-
-      
-
-        
-
-        <!-- <button [disabled]="!isLoggedIn" class="btn btn-danger" (click)="logout()">Logout</button> -->
-  </div>
-
-  <div class="form-group row justify-content-center mt-5 ">
-    <button [disabled]="isLoggedIn" (click)="login()" class="btn btn-success mr-5 btn-block col-sm-2 mb-3">Login</button>
-</div>
-</form> 
+    </form>
 </div>

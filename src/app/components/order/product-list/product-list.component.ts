@@ -1,4 +1,5 @@
 import { Component, OnInit, OnChanges ,Input ,Output , EventEmitter} from '@angular/core';
+import { Router } from '@angular/router';
 import { ICategory } from 'src/app/Models/icategory';
 import { IProduct } from 'src/app/Models/iproduct';
 import { ProductsService } from 'src/app/services/products.service';
@@ -11,7 +12,8 @@ import { StaticProductService } from 'src/app/services/static-product.service';
 })
 export class ProductListComponent implements OnInit , OnChanges{
 
-  products : IProduct[] | null = null;
+ // products : IProduct[] | null = null;
+  products! : IProduct[] ;
 
   @Input() categoryId : number = 0;
 
@@ -22,7 +24,7 @@ export class ProductListComponent implements OnInit , OnChanges{
   quantUser = 1;
 
 
-  constructor(private staticProduct : StaticProductService , private productService : ProductsService){
+  constructor(private staticProduct : StaticProductService , private productService : ProductsService , private router : Router){
 
    // this.filterdProducts = this.products;
 
@@ -32,7 +34,7 @@ export class ProductListComponent implements OnInit , OnChanges{
 
   ngOnInit(): void {
     console.log('init');
-    this.products = this.staticProduct.getAll();
+   // this.products = this.staticProduct.getAll();
     this.getAllProducts();
   }
 
@@ -85,6 +87,16 @@ export class ProductListComponent implements OnInit , OnChanges{
     this.productService.getAll().subscribe(res => {
       this.products = res;
     })
+  }
+
+  confirmDelete(id : number){
+   let res = confirm('Are You Sure?');
+
+   if(res){
+    this.productService.delete(id).subscribe(res => {
+     this.products = this.products?.filter(x => x.id != id);
+    })
+   }
   }
 
 }
